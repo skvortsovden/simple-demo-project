@@ -7,7 +7,6 @@
 
 # Map static resources from the /public folder to the /assets URL path
 
-+anyhost
 GET     /todo                       controllers.TodoListController.getAll
 GET     /todo/:itemId               controllers.TodoListController.getById(itemId: Long)
 PUT     /todo/done/:itemId          controllers.TodoListController.markAsDone(itemId: Long)
