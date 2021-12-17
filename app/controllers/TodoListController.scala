@@ -19,6 +19,13 @@ class TodoListController @Inject()(val controllerComponents: ControllerComponent
 
   val logger = Logger(this.getClass)
 
+  // curl localhost:9000
+  def getIndex(): Action[AnyContent] = Action {
+    var welcomeMessage: String = "Hello, Lunatech!"
+    logger.info(welcomeMessage)
+    Ok(welcomeMessage)
+  }
+
   // curl localhost:9000/todo
   def getAll(): Action[AnyContent] = Action {
     logger.info("Getting All items")
