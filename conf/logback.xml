@@ -14,13 +14,13 @@
   </appender>
 
   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-    <withJansi>true</withJansi>
-    <encoder>
-      <charset>UTF-8</charset>
-      <pattern>
-        %d{yyyy-MM-dd HH:mm:ss} %highlight(%-5level) %cyan(%logger{36}) %magenta(%X{akkaSource}) %msg%n
-      </pattern>
-    </encoder>
+      <!-- changed the encoder -->
+      <encoder class="com.newrelic.logging.logback.NewRelicEncoder"/>
+  </appender>
+
+  <!-- added the ASYNC appender -->
+  <appender name="ASYNC" class="com.newrelic.logging.logback.NewRelicAsyncAppender">
+      <appender-ref ref="STDOUT" />
   </appender>
 
   <appender name="ASYNCFILE" class="ch.qos.logback.classic.AsyncAppender">
@@ -36,7 +36,7 @@
 
   <root level="INFO">
     <!--<appender-ref ref="ASYNCFILE" />-->
-    <appender-ref ref="ASYNCSTDOUT" />
+    <appender-ref ref="ASYNC" />
   </root>
 
 </configuration>
